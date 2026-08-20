@@ -9,18 +9,21 @@
         /* ===================================================
            COLOR & THEME SETTINGS
         =================================================== */
-       :root{
-    --background:#0d0d0d;
-    --primary-text:#ffffff;
-    --secondary-text:#9ca3af;
-    --primary-hover:#7c3aed;
-    --border:#262626;
-    --skill-bg:#d58815;
-    --nav-height:70px;
-}
+        :root {
+            --background: #0d0d0d;
+            --surface: #171717;
+            --primary-text: #ffffff;
+            --secondary-text: #9ca3af;
+            --primary-hover: #7c3aed;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --border: #262626;
+            --skill-bg: #1f2937;
+            --nav-height: 70px;
+        }
 
         /* ===================================================
-           DESIGN ENGINE
+           BASE & RESET
         =================================================== */
         * {
             margin: 0;
@@ -40,11 +43,13 @@
             padding: 0 20px;
         }
 
-        /* MINIMAL NAVBAR */
+        /* ===================================================
+           NAVBAR
+        =================================================== */
         .nav {
             position: sticky;
             top: 0;
-            background: rgba (15, 23, 842, 0.7);
+            background: rgba(13, 13, 13, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
@@ -65,34 +70,36 @@
 
         .nav-logo {
             font-weight: 800;
-            font-size: 1.2rem;
-            letter-spacing: -1.5px;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
             text-decoration: none;
             color: var(--primary-text);
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 24px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--secondary-text);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
             color: var(--primary-text);
         }
 
-        /* REDESIGNED HERO SECTION (Left Aligned) */
+        /* ===================================================
+           HERO SECTION & PROFILE PHOTO
+        =================================================== */
         .hero {
             max-width: 900px;
             margin: 0 auto;
-            padding: 120px 0 80px 0;
+            padding: 100px 0 70px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -104,68 +111,90 @@
             flex: 1;
         }
 
-        .profile-img {
+        .profile-img-wrapper {
+            position: relative;
             width: 180px;
             height: 180px;
+            flex-shrink: 0;
+            border-radius: 24px;
+            padding: 4px;
+            background: linear-gradient(135deg, #262626, #3b82f6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
             border-radius: 20px;
             object-fit: cover;
             filter: grayscale(100%);
             transition: all 0.4s ease;
-            border: 1px solid var(--border);
+            display: block;
         }
 
-        .profile-img:hover {
+        .profile-img-wrapper:hover .profile-img {
             filter: grayscale(0%);
             transform: scale(1.02);
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            letter-spacing: -4px;
-            line-height: 0.9;
-            margin-bottom: 24px;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 16px;
+        }
+
+        .availability {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            font-weight: 500;
         }
 
         .tagline {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--secondary-text);
-            max-width: 500px;
-            margin-bottom: 30px;
-            font-weight: 400;
+            max-width: 580px;
+            margin-bottom: 24px;
         }
 
-     .contact-links {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
 
-.contact-links a {
-    color: #3b82f6;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    border-bottom: 1px solid #3b82f6;
-    padding-bottom: 2px;
-    transition: 0.3s ease;
-}
+        .contact-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+            transition: 0.2s ease;
+        }
 
-.contact-links a:hover {
-    color: #60a5fa;
-    border-color: #60a5fa;
-    opacity: 1;
-}
+        .contact-links a:hover {
+            color: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
 
-        /* CONTENT SECTIONS */
+        /* ===================================================
+           CONTENT SECTIONS
+        =================================================== */
         section {
             max-width: 900px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 220px 1fr;
+            grid-template-columns: 200px 1fr;
             gap: 40px;
-            padding: 80px 0;
+            padding: 70px 0;
             border-bottom: 1px solid var(--border);
         }
 
@@ -175,11 +204,11 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--secondary-text);
-            padding-top: 5px;
+            padding-top: 4px;
         }
 
         .content-block {
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
 
         .content-block:last-child {
@@ -187,7 +216,7 @@
         }
 
         h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 6px;
             letter-spacing: -0.5px;
@@ -196,7 +225,7 @@
         .sub-heading {
             font-weight: 600;
             color: var(--primary-text);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             display: block;
             font-size: 0.95rem;
         }
@@ -204,15 +233,14 @@
         .date {
             color: var(--secondary-text);
             font-size: 0.85rem;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             display: block;
-            font-weight: 500;
         }
 
         p {
             color: var(--secondary-text);
-            font-size: 1rem;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
         }
 
         ul {
@@ -223,7 +251,7 @@
             position: relative;
             padding-left: 20px;
             color: var(--secondary-text);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 0.95rem;
         }
 
@@ -235,22 +263,25 @@
             font-weight: bold;
         }
 
-        /* SKILLS GRID */
+        /* ===================================================
+           SKILLS GRID
+        =================================================== */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             padding-left: 0;
         }
 
         .skills-grid li {
-            background: var(--skill-bg);
+            background: var(--surface);
             padding: 6px 14px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             color: var(--primary-text);
-            font-weight: 600;
-            border: 1px solid transparent;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            margin-bottom: 0;
         }
 
         .skills-grid li::before {
@@ -259,20 +290,23 @@
         }
 
         .skills-grid li:hover {
-            border-color: #ca27a4;
+            border-color: var(--accent);
         }
 
-        /* FOOTER */
+        /* ===================================================
+           FOOTER
+        =================================================== */
         footer {
             max-width: 900px;
             margin: 0 auto;
-            padding: 60px 0;
+            padding: 50px 0;
             color: var(--secondary-text);
-            font-size: 12px;
-            text-align: left;
+            font-size: 13px;
         }
 
-        /* MOBILE RESPONSIVE */
+        /* ===================================================
+           MOBILE RESPONSIVENESS
+        =================================================== */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0 10px;
@@ -281,31 +315,30 @@
             .hero {
                 flex-direction: column-reverse;
                 text-align: left;
-                padding: 60px 0;
+                padding: 50px 0;
                 align-items: flex-start;
             }
 
             h1 {
-                font-size: 2.8rem;
-                letter-spacing: -2px;
+                font-size: 2.5rem;
             }
 
-            .profile-img {
+            .profile-img-wrapper {
                 width: 120px;
                 height: 120px;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
 
             section {
                 grid-template-columns: 1fr;
                 gap: 20px;
-                padding: 50px 0;
+                padding: 45px 0;
             }
 
             h2 {
                 border-bottom: 1px solid var(--border);
-                padding-bottom: 10px;
-                margin-bottom: 10px;
+                padding-bottom: 8px;
+                margin-bottom: 8px;
             }
         }
     </style>
@@ -315,9 +348,9 @@
 
     <nav class="nav">
         <div class="nav-container">
-            <a href="#" class="nav-logo">Anmol Srivastvava</a>
+            <a href="#" class="nav-logo">Anmol Srivastava</a>
             <div class="nav-links">
-                
+                <a href="#about">About</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
@@ -327,53 +360,52 @@
 
     <header class="hero">
         <div class="hero-content">
+            <span class="availability">Open to AI/ML collaborations & hackathons</span>
             <h1>ANMOL SRIVASTAVA</h1>
-             <p><p class="availability">
-Open to AI/ML collaborations & hackathons.
-
             <p class="tagline">
-               Undergrad B.Tech AI &amp; ML |  GOOGLE STUDENT AMBASSADOR 2026 | Passionate about  Al, ML &amp driven Models and Idea; Critical Thinking | Tech Enthusiast
+                Undergrad B.Tech AI &amp; ML | Google Student Ambassador 2026 | Passionate about AI/ML models, system architectures, and critical thinking.
             </p>
             <div class="contact-links">
-                <a href="srivastavaanmol171@gmail.com">Email</a>
-                <a href="https://www.linkedin.com/in/anmol-srivastava-789b2635b/">LinkeDin</a>
-                <a href="https://github.com/Maddy2244">GitHub</a>
-                <a href="https://www.instagram.com/maddy__7788?igsh=enJzOTlweDg3dHA4">Instagram</a>
+                <a href="mailto:srivastavaanmol171@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/anmol-srivastava-789b2635b/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/Maddy2244" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.instagram.com/maddy__7788?igsh=enJzOTlweDg3dHA4" target="_blank" rel="noopener">Instagram</a>
             </div>
-        </div
-        <img src="https://media.licdn.com/dms/image/v2/D5603AQHHI8jXunVW1Q/profile-displayphoto-crop_800_800/B56Z2Q9IweIsAI-/0/1776253445070?e=1788393600&v=beta&t=JzUBRVVdFGRmDUL6vjErmakf8alcF8A8km50VYFFpNw" alt="Profile"
-            class="profile-img">
+        </div>
+        
+        <div class="profile-img-wrapper">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQHHI8jXunVW1Q/profile-displayphoto-crop_800_800/B56Z2Q9IweIsAI-/0/1776253445070?e=1788393600&v=beta&t=JzUBRVVdFGRmDUL6vjErmakf8alcF8A8km50VYFFpNw" 
+                 alt="Anmol Srivastava" 
+                 class="profile-img"
+                 loading="lazy">
+        </div>
     </header>
-<section id="story">
-<h2>My Journey</h2>
 
-<p>
-Started with curiosity for computers,
-then moved into AI, automation and
-building systems that solve real problems.
-</p>
-<section id="now">
-<h2>Currently</h2>
+    <section id="about">
+        <h2>About</h2>
+        <div class="content-wrapper">
+            <div class="content-block">
+                <h3>My Journey</h3>
+                <p>Started with a curiosity for computers, then moved into AI, automation, and building systems that solve real-world problems.</p>
+            </div>
+            <div class="content-block">
+                <h3>Currently</h3>
+                <p>Exploring AI agents, computer vision, and modern UI systems while building community initiatives and hands-on projects.</p>
+            </div>
+        </div>
+    </section>
 
-<p>
-Exploring AI agents, computer vision
-and futuristic UI systems while building
-real-world projects & communities.
-</p>
-</section>
-</section>
     <section id="experience">
         <h2>Experience</h2>
         <div class="content-wrapper">
             <div class="content-block">
                 <h3>Technical Lead</h3>
-                <div class="sub-heading">Google Student Ambassador </div>
+                <div class="sub-heading">Google Student Ambassador</div>
                 <div class="date">April 2026 — Present</div>
-                <p>Representing The Gemini in the campus .</p>
+                <p>Representing Gemini initiatives across campus.</p>
                 <ul>
-                    <li>Hosted online workshops , "how to use Gemini tools".</li>
-                    <li>Developed automated certification systems for technical workshops.</li>
-                .</li>
+                    <li>Hosted interactive workshops on practical workflows with Gemini developer tools.</li>
+                    <li>Engineered automated certification workflows for technical workshops.</li>
                 </ul>
             </div>
 
@@ -381,151 +413,81 @@ real-world projects & communities.
                 <h3>Technical Assistant</h3>
                 <div class="sub-heading">Gov CSC</div>
                 <div class="date">March 2025 — Present</div>
-                <p>Handles daily operations and also do the work on Census2026.</p>
+                <p>Manage digital service operations and data administration for regional digital programs.</p>
             </div>
         </div>
     </section>
 
-   <section id="education">
-
-    <h2>Education</h2>
-
-    <div class="education-timeline">
-
-        <div class="edu-card">
-
-            <div class="edu-year">
-                2025 — Present
-            </div>
-
-            <div class="edu-content">
-
+    <section id="education">
+        <h2>Education</h2>
+        <div class="content-wrapper">
+            <div class="content-block">
                 <h3>B.Tech in Computer Science (AI & ML)</h3>
-
-                <p class="edu-school">
-                    KIPM College of Engineering & Technology
-                </p>
-
-                <p>
-                    Exploring Artificial Intelligence,
-                    Machine Learning and future-focused technologies
-                    with hands-on technical learning.
-                </p>
-
+                <div class="sub-heading">KIPM College of Engineering & Technology</div>
+                <div class="date">2025 — Present</div>
+                <p>Core focus on Artificial Intelligence, Deep Learning, and system architectures.</p>
             </div>
 
-        </div>
-
-        <div class="edu-card">
-
-            <div class="edu-year">
-                2018 — 2021
-            </div>
-
-            <div class="edu-content">
-
+            <div class="content-block">
                 <h3>Senior Secondary Education</h3>
-
-                <p class="edu-school">
-                    PD ACADEMY,DEORIA
-                </p>
-
-                <p>
-                    Developed leadership, teamwork and discipline
-                    through academic activities and scouting programs.
-                </p>
-
+                <div class="sub-heading">PD Academy, Deoria</div>
+                <div class="date">2018 — 2021</div>
             </div>
 
-        </div>
-
-        <div class="edu-card">
-
-            <div class="edu-year">
-                2016 — 2018
-            </div>
-
-            <div class="edu-content">
-
+            <div class="content-block">
                 <h3>High School</h3>
-
-                <p class="edu-school">
-                    LAGNA DEVI TARAKANT  Senior Secondary School
-                </p>
-
-                <p>
-                    Built communication and leadership skills
-                    while serving as a house captain.
-                </p>
-
+                <div class="sub-heading">Lagna Devi Tarakant Senior Secondary School</div>
+                <div class="date">2016 — 2018</div>
             </div>
-
         </div>
-
-    </div>
-
-</section>
+    </section>
 
     <section id="projects">
-        <h2>Projects / Experience</h2>
+        <h2>Projects</h2>
         <div class="content-wrapper">
             <div class="content-block">
-                <h3>LINE FOLLOWER BOT</h3>
-                <p>A beginer friendly Bot which demomstrate the path and follow the line.</p>
-                <div class="contact-links" style="margin-top: 10px;">
-                    <a href="https://github.com/Maddy2244/line-following-robot" style="font-size: 12px; border: none; font-weight: 700;">View Project →</a>
+                <h3>Line Follower Robot</h3>
+                <p>An autonomous robotics project utilizing infrared sensor arrays and embedded C logic to track dynamic pathways.</p>
+                <div class="contact-links">
+                    <a href="https://github.com/Maddy2244/line-following-robot" target="_blank" rel="noopener">View Repository →</a>
                 </div>
-            </div>
-
-          
-               
             </div>
         </div>
     </section>
-    <section id="Projects">
-        <h2>CERTIFICATIONS</h2>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
         <div class="content-wrapper">
             <div class="content-block">
-                <h3>AI TOOLS WORKSHOP</h3>
-                <p>Attend 4 hour workshop of AI Tools on  BE10X </p>
-                 <div class="contact-links" style="margin-top: 10px;">
-                    <a href="https://media.licdn.com/dms/image/v2/D5622AQHkPnwIsESaKQ/feedshare-shrink_1280/B56ZzSbDCfHMAM-/0/1773056831917?e=1781740800&v=beta&t=vQ7h7fZc118di_PPbH0MSWee28F-Hryz1YXNqAi0w00"style="font-size: 12px; border: none; font-weight: 700;">View Certificate →</a>
-                 </div><br>
-                  <div class="content-block">
-                <h3>Hosted a Career glow-up</h3>
-                <p>It was great to interact with such talented minds, manage the event, and be a part of an engaging learning experience.</p>
-                <div class="contact-links" style="margin-top: 10px;">
-                    <a href="https://media.licdn.com/dms/image/v2/D5622AQG9jwQWykNUug/feedshare-shrink_800/B56Z3S2k95IUAc-/0/1777359016053?e=1782950400&v=beta&t=tSEY7LkQjXUA0ffRMFQDpnsjMYz2J39zGKtvf1WuCNM"style="font-size: 12px; border: none; font-weight: 700;">View image  →</a>
+                <h3>AI Tools Workshop</h3>
+                <div class="sub-heading">BE10X</div>
+                <div class="contact-links" style="margin-top: 8px;">
+                    <a href="https://media.licdn.com/dms/image/v2/D5622AQHkPnwIsESaKQ/feedshare-shrink_1280/B56ZzSbDCfHMAM-/0/1773056831917?e=1781740800&v=beta&t=vQ7h7fZc118di_PPbH0MSWee28F-Hryz1YXNqAi0w00" target="_blank" rel="noopener">View Certificate →</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="skills">
         <h2>Expertise</h2>
         <div class="content-wrapper">
             <ul class="skills-grid">
-                
                 <li>Python</li>
-                <li>MS Office</li>
-               
-             <li>C</li>
-             <li>HTML</li>
+                <li>Machine Learning</li>
+                <li>C</li>
+                <li>HTML &amp; CSS</li>
                 <li>UI/UX Design</li>
                 <li>System Design</li>
                 <li>Performance Engineering</li>
-                <li> CSS</li>
-                <li>Machine Learning</li>
-                <li>leadership</li>
-                 <li>Photography</li>
-                 <li>Editing</li>
+                <li>Leadership</li>
             </ul>
         </div>
     </section>
 
     <footer>
-        <p>&copy;Designed & engineered by Anmol.
-Built with brain .</p>
+        <p>&copy; Designed & engineered by Anmol Srivastava.</p>
     </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"62e76c9beded41c4a8e08e7fd41042dd","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 
 </html>
